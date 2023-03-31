@@ -14,9 +14,7 @@ def extract_table_from_pdf(pdf_path):
                 # 如果找到表格则将其写入Excel文件
                 for table in tables:
                     # 将表格中的每一行写入Excel文件
-                    for row in table:
-                        row_list = [str(cell).strip() for cell in row]
-                        ws.append(row_list)
+                    ws.append([str(cell).strip() for cell in row] for row in table)1.
         # 将工作簿保存为Excel文件
         wb.save(pdf_path.replace(".pdf", ".xlsx"))
         return True
